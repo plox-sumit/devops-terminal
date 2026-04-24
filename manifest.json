@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "ploxv1.1",
+  "version": "1.1",
+  "description": "A DevOps Dashboard with a Linux-style AI terminal",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "permissions": []
+}

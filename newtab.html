@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ploxv1.1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- LEFT SIDEBAR -->
+  <div class="left-sidebar">
+    <div class="glass-card news-card">
+      <div class="card-titlebar">
+        <span class="card-icon">📰</span>
+        <span class="card-titlebar-text">Today's Reads</span>
+      </div>
+      <div class="news-scroll" id="newsScroll"></div>
+    </div>
+
+    <div class="glass-card drawing-card">
+      <div class="card-titlebar">
+        <span class="card-icon">🎨</span>
+        <span class="card-titlebar-text">Drawing Board</span>
+        <div class="drawing-controls">
+          <input type="color" id="drawColor" value="#ffffff" class="color-picker" title="Pick color">
+          <select id="brushSize" class="brush-select" title="Brush size">
+            <option value="2">2px</option>
+            <option value="4" selected>4px</option>
+            <option value="8">8px</option>
+            <option value="12">12px</option>
+          </select>
+          <button id="clearCanvas" class="clear-btn" title="Clear">✕</button>
+        </div>
+      </div>
+      <canvas id="drawingCanvas"></canvas>
+    </div>
+  </div>
+
+  <!-- CENTER TERMINAL -->
+  <div class="terminal-container glass-card">
+    <div class="card-titlebar terminal-titlebar">
+      <div class="terminal-dots">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+      </div>
+      <span class="card-titlebar-text" style="margin-left:6px;">user@devops-dashboard: ~</span>
+    </div>
+    <div class="terminal" id="terminal">
+      <div class="terminal-content" id="terminalContent">
+        <div class="output welcome-msg">Welcome to PloxV1.1 Terminal
+Type any Linux command to get an AI-powered explanation.
+Type 'help' for available commands. Type 'clear' to reset.
+──────────────────────────────────────────────────────</div>
+        <div class="line active" id="activeLine">
+          <span class="prompt">user$&nbsp;</span><span id="input"></span><span class="cursor"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right-panel">
+    <div class="profile-section">
+      <div class="profile-circle" id="profileCircle" title="Click to upload profile picture">
+        <span id="pfpText">pfp</span>
+        <img id="pfpImg" src="" alt="pfp" style="display:none;">
+        <input type="file" id="pfpInput" accept="image/*" style="display:none;">
+      </div>
+      <div class="profile-info">
+        <span class="profile-name">User $</span>
+      </div>
+    </div>
+
+    <div class="glass-card cotd-card">
+      <div class="card-titlebar">
+        <span class="card-icon">⚡</span>
+        <span class="card-titlebar-text">Today's Command</span>
+      </div>
+      <div class="cotd-content">
+        <div class="cotd-code-row">
+          <code id="cotdCommand"></code>
+          <button class="copy-btn" id="cotdCopyBtn" title="Copy command">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </div>
+        <p id="cotdDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAILY QUOTE -->
+  <div class="daily-quote" id="dailyQuote"></div>
+
+  <!-- BRANDING -->
+  <div class="branding">by ploxsumit</div>
+
+  <!-- CONFIG FIRST, THEN MAIN SCRIPT -->
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
