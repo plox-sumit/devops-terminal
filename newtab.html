@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ploxv1.1</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>ploxv1.2</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +15,7 @@
         <span class="card-icon">📰</span>
         <span class="card-titlebar-text">Today's Reads</span>
       </div>
-      <div class="news-scroll" id="newsScroll"></div>
+      <div class="news-scroll" id="newsScroll"><div class="news-loading">Fetching latest news...</div></div>
     </div>
 
     <div class="glass-card drawing-card">
@@ -52,7 +49,7 @@
     </div>
     <div class="terminal" id="terminal">
       <div class="terminal-content" id="terminalContent">
-        <div class="output welcome-msg">Welcome to PloxV1.1 Terminal
+        <div class="output welcome-msg">Welcome to PloxV1.2 Terminal
 Type any Linux command to get an AI-powered explanation.
 Type 'help' for available commands. Type 'clear' to reset.
 ──────────────────────────────────────────────────────</div>
@@ -85,7 +82,8 @@ Type 'help' for available commands. Type 'clear' to reset.
         <div class="cotd-code-row">
           <code id="cotdCommand"></code>
           <button class="copy-btn" id="cotdCopyBtn" title="Copy command">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <svg class="icon-copy" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <svg class="icon-copied" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </button>
         </div>
         <p id="cotdDesc"></p>

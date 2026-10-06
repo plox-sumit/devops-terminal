@@ -1,10 +1,26 @@
 {
   "manifest_version": 3,
-  "name": "ploxv1.1",
-  "version": "1.1",
+  "name": "ploxv1.2",
+  "version": "1.2",
   "description": "A DevOps Dashboard with a Linux-style AI terminal",
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },
-  "permissions": []
+  "permissions": [],
+  "host_permissions": [
+    "https://devops.com/*",
+    "https://thenewstack.io/*",
+    "https://feed.infoq.com/*",
+    "https://kubernetes.io/*",
+    "https://www.cncf.io/*",
+    "https://blog.container-solutions.com/*",
+    "https://www.docker.com/*",
+    "https://www.sysdig.com/*",
+    "https://aws.amazon.com/*",
+    "https://cloudblog.withgoogle.com/*",
+    "https://azure.microsoft.com/*",
+    "https://engineering.fb.com/*",
+    "https://netflixtechblog.com/*",
+    "https://blog.cloudflare.com/*"
+  ]
 }

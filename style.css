@@ -1,3 +1,12 @@
+/* ===== FONT (bundled, licence in fonts/OFL.txt; one file covers weights 300-700, Latin only) ===== */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('fonts/Manrope.woff2') format('woff2');
+}
+
 /* ===== RESET & BASE ===== */
 *, *::before, *::after {
   margin: 0;
@@ -73,10 +82,10 @@ html, body {
   animation: shineEffect 8s ease-in-out infinite;
 }
 
+/* transform, not left: the sweep then runs on the compositor and costs no layout while idle */
 @keyframes shineEffect {
-  0% { left: -50%; }
-  50% { left: 110%; }
-  100% { left: 110%; }
+  0% { transform: translateX(0); }
+  50%, 100% { transform: translateX(320%); }
 }
 
 /* ===== CARD TITLEBAR ===== */
@@ -525,6 +534,15 @@ html, body {
 
 .copy-btn.copied {
   color: #28ca41;
+}
+
+.copy-btn .icon-copied,
+.copy-btn.copied .icon-copy {
+  display: none;
+}
+
+.copy-btn.copied .icon-copied {
+  display: block;
 }
 
 .cotd-content p {

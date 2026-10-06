@@ -1,4 +1,4 @@
-# 🚀 Plox v1.1 — DevOps AI New Tab
+# 🚀 Plox v1.2 — DevOps AI New Tab
 
 A sleek **DevOps dashboard + AI-powered Linux terminal** that replaces your browser’s new tab.
 
@@ -16,37 +16,20 @@ It gives you:
 
 ### 1. Download the Project
 
-**Option A — Download ZIP**
-
-1. Click the green **Code** button on this repo
-2. Click **Download ZIP**
-3. Extract the folder
-
-**Option B — Clone**
+**Option A — Clone**
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git clone https://github.com/plox-sumit/devops-terminal.git
 ```
+
+**Option B — Download ZIP**
+
+1. Download https://github.com/plox-sumit/devops-terminal/archive/refs/heads/main.zip
+2. Extract the folder
 
 ---
 
-### 2. Add Your Hugging Face API Token (IMPORTANT)
-
-Before using the AI terminal:
-
-1. Open `config.js`
-2. Add your token:
-
-```js
-HF_TOKEN: "your_huggingface_token_here"
-```
-
-👉 Get your token from: https://huggingface.co/settings/tokens
-(Only "Read" access is needed)
-
----
-
-### 3. Load as Chrome Extension
+### 2. Load as Chrome Extension
 
 1. Open Chrome
 2. Go to:
@@ -58,6 +41,24 @@ chrome://extensions/
 3. Turn ON **Developer Mode** (top right)
 4. Click **Load unpacked**
 5. Select your project folder
+
+After you pull an update or edit a file, press the reload icon on the extension's card.
+
+---
+
+### 3. Add Your Hugging Face API Token (IMPORTANT)
+
+1. Get a token from https://huggingface.co/settings/tokens (only "Read" access is needed)
+2. Open a new tab and type in the terminal:
+
+```
+token hf_your_token_here
+```
+
+The token is saved in your browser and is not shown on screen again. `token clear` removes it.
+
+You can still put it in `config.js` instead (`HF_TOKEN: "..."`), but git tracks that file,
+so take care never to commit it.
 
 ---
 
@@ -90,12 +91,20 @@ Open a new tab — your dashboard is live.
   * Cloud providers
   * Kubernetes ecosystem
 * Updates daily automatically
+* Fetched straight from the 14 source sites, once a day. Later tabs reuse the saved list and make no requests
+* If a refresh fails, yesterday's list stays on screen and the next try waits 15 minutes
+* If you close the tab before every site has answered, the next tab asks only the rest
+* Each story shows the day it was published
+
+The extension asks for access to those 14 sites only, so it can read their feeds.
+To add or remove a feed, edit the list in `script.js` **and** the matching line under
+`host_permissions` in `manifest.json`. `node test.js` fails if the two lists disagree.
 
 ---
 
 ### ⚡ Command of the Day
 
-* Random useful command shown daily
+* A different command every day, from the 1,260 in `commands_with_desc.txt`
 * Includes description + copy button
 
 ---
@@ -112,28 +121,46 @@ Open a new tab — your dashboard is live.
 
 * Limits AI usage per day (default: 5)
 * Prevents overuse of API
+* Answers are saved, so asking about the same command again costs nothing
+* A rate-limit or server error is retried twice before it is shown
 
 ---
 
 ## 📁 Project Structure
 
 ```
-/project
+/devops-terminal
   ├── newtab.html        # Main UI
   ├── style.css          # UI styling
   ├── script.js          # Core logic
-  ├── config.js          # User config (API key)
-  ├── manifest.json      # Chrome extension config
+  ├── config.js          # User config (model, endpoint, daily limit)
+  ├── manifest.json      # Chrome extension config + the feed sites it may read
   ├── commands_with_desc.txt  # Command database
+  ├── fonts/             # Manrope font (bundled) and its licence
+  ├── test.js            # Smoke test
 ```
+
+---
+
+## 🧪 Testing
+
+```bash
+node test.js
+```
+
+Opens the page in headless Chrome or Edge and checks the news, quote, command of the day,
+terminal, token command, daily limit, drawing board and midnight rollover. Every outside
+request is answered from data inside the test, so it needs no network and no token.
+Needs Node 22+ and no `npm install`.
 
 ---
 
 ## ⚠️ Notes
 
-* Your API key is **not stored anywhere externally**
-* Everything runs locally in your browser
-* Do NOT share your `config.js` publicly
+* Your API key is **not stored anywhere externally**. It stays in your browser
+* Everything runs locally in your browser. The only outside requests are the news feeds,
+  the daily quote and your AI lookups
+* If you put your token in `config.js`, do NOT commit or share that file
 
 ---
 
